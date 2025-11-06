@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import jamVideo from '../../assets/jam-conference/jam/jam-video.mp4';
 
 const Hero = () => {
   return (
@@ -28,32 +27,29 @@ const Hero = () => {
               Student Game Collective
             </p>
             <h1 className="mt-6 font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">
-              HyperForge builds expressive worlds while learning the craft of game development together.
+              Hexacore is coming for GameJam, rolling to Rollic.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-200 lg:mx-0">
-              We're a student-led group of programmers, artists, and storytellers experimenting with mechanics, sound, and
-              narrative through collaborative prototypes and game jams.
+              As Software Engineering students from Ankara Yıldırım Beyazıt University, we are a multidisciplinary team with diverse
+              backgrounds and experiences. We have united to come to Istanbul, join Rollic, and win the Game Jam.
             </p>
           </motion.div>
 
           <motion.div
-            className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl lg:min-h-[26rem]"
+            className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <video
-              className="h-full w-full object-cover"
-              src={jamVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              controls
-              poster="https://images.unsplash.com/photo-1462332420958-a05d1e002413?auto=format&fit=crop&w=2000&q=80"
-            >
-              Your browser does not support the video tag.
-            </video>
+            <div className="aspect-video bg-black">
+              <iframe
+                src="https://www.youtube.com/embed/2NBSgx6D0Po?autoplay=0&mute=1&rel=0"
+                title="Gameplay montage"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
           </motion.div>
         </div>
       </div>

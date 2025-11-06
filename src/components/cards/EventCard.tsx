@@ -1,9 +1,16 @@
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCarousel } from '../../hooks/useCarousel';
-import type { Event } from '../../data/events';
+import type { Event, EventMedia } from '../../data/events';
 
 const EventCard = ({ event }: { event: Event }) => {
-  const { index, direction, next, prev, goTo } = useCarousel(event.images.length, 10000);
+  const { index, direction, next, prev, goTo, setAutoAdvanceEnabled } = useCarousel(event.media.length, 10000);
+  const currentMedia = event.media[index];
+  const shouldAutoAdvance = currentMedia.type !== 'video';
+
+  useEffect(() => {
+    setAutoAdvanceEnabled(shouldAutoAdvance);
+  }, [setAutoAdvanceEnabled, shouldAutoAdvance]);
 
   return (
     <motion.article
@@ -12,22 +19,41 @@ const EventCard = ({ event }: { event: Event }) => {
     >
       <div className="relative aspect-[5/3] overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
-          <motion.img
-            key={event.images[index]}
-            src={event.images[index]}
-            alt={`${event.title} photo ${index + 1}`}
-            className="absolute h-full w-full object-cover"
+          <motion.div
+            key={`${currentMedia.type}-${currentMedia.src}`}
+            className="absolute inset-0"
             custom={direction}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-          />
+          >
+            {currentMedia.type === 'image' ? (
+              <img
+                src={currentMedia.src}
+                alt={currentMedia.alt ?? `${event.title} photo ${index + 1}`}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <video
+                className="h-full w-full object-cover"
+                src={currentMedia.src}
+                aria-label={currentMedia.alt ?? `${event.title} video`}
+                poster={currentMedia.poster}
+                autoPlay
+                muted
+                controls
+                playsInline
+                preload="metadata"
+                onEnded={() => next()}
+              />
+            )}
+          </motion.div>
         </AnimatePresence>
         <div className="absolute left-4 top-4 rounded-full bg-white/90 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-slate-900">
           {event.date}
         </div>
-        {event.images.length > 1 && (
+        {event.media.length > 1 && (
           <>
             <button
               className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 text-slate-900 shadow hover:bg-white"
@@ -44,9 +70,9 @@ const EventCard = ({ event }: { event: Event }) => {
               {'>'}
             </button>
             <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1">
-              {event.images.map((_, dotIndex) => (
+              {event.media.map((mediaItem: EventMedia, dotIndex) => (
                 <button
-                  key={event.id + dotIndex}
+                  key={`${event.id}-${mediaItem.type}-${dotIndex}`}
                   className={`h-2 w-2 rounded-full ${index === dotIndex ? 'bg-white' : 'bg-white/50'}`}
                   aria-label={`Go to image ${dotIndex + 1}`}
                   onClick={() => goTo(dotIndex)}
