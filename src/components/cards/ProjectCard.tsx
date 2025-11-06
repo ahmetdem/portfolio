@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCarousel } from '../../hooks/useCarousel';
+import { useInViewport } from '../../hooks/useInViewport';
 import type { Project, ProjectMedia } from '../../data/projects';
 
 type Props = {
@@ -9,16 +10,29 @@ type Props = {
 
 const ProjectCard = ({ project }: Props) => {
   const { index, direction, next, prev, goTo, setAutoAdvanceEnabled } = useCarousel(project.media.length, 10000);
+  const { ref: cardRef, isInView } = useInViewport<HTMLDivElement>({ threshold: 0.35 });
   const currentMedia = project.media[index];
   const isPortrait = project.mediaAspect === 'portrait';
   const mediaSizeClass = isPortrait ? project.mediaHeight ?? 'h-[420px]' : 'aspect-video';
-  const shouldAutoAdvance = currentMedia.type !== 'video';
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const shouldAutoAdvance = currentMedia.type !== 'video' || !isInView;
 
   useEffect(() => {
     setAutoAdvanceEnabled(shouldAutoAdvance);
   }, [setAutoAdvanceEnabled, shouldAutoAdvance]);
+  useEffect(() => {
+    if (currentMedia.type !== 'video' || !videoRef.current) return;
+    if (isInView) {
+      videoRef.current.play().catch(() => undefined);
+    } else {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, [currentMedia, isInView]);
+
   return (
     <motion.article
+      ref={cardRef}
       className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-white/5"
       whileHover={{ y: -4 }}
     >
@@ -41,11 +55,12 @@ const ProjectCard = ({ project }: Props) => {
               />
             ) : (
               <video
+                ref={videoRef}
                 className="h-full w-full object-cover"
                 src={currentMedia.src}
                 aria-label={currentMedia.alt ?? `${project.title} gameplay`}
                 poster={currentMedia.poster}
-                autoPlay
+                autoPlay={isInView}
                 muted
                 controls
                 playsInline

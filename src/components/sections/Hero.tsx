@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import heroImage from '../../assets/foto.png';
 
 const Hero = () => {
   return (
@@ -15,8 +16,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-slate-950" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[110rem] px-4 py-16 lg:px-12">
-        <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="relative z-10 mx-auto w-full max-w-[120rem] px-4 py-16 lg:px-12">
+        <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <motion.div
             className="text-center lg:text-left"
             initial={{ opacity: 0, y: 20 }}
@@ -36,20 +37,12 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+            className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl lg:min-h-[28rem]"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <div className="aspect-video bg-black">
-              <iframe
-                src="https://www.youtube.com/embed/2NBSgx6D0Po?autoplay=0&mute=1&rel=0"
-                title="Gameplay montage"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
-              />
-            </div>
+            <img src={heroImage} alt="Hexacore team" className="h-full w-full object-cover" />
           </motion.div>
         </div>
       </div>

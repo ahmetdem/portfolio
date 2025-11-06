@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 type Mode = 'light' | 'dark';
 
-const storageKey = 'hyperforge-theme';
+const storageKey = 'hexacore-theme';
 
 export const useDarkMode = () => {
   const [mode, setMode] = useState<Mode>(() => {

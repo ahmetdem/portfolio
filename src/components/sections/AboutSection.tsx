@@ -12,16 +12,14 @@ const AboutSection = () => {
         >
           <p className="mb-4 text-sm uppercase tracking-[0.3em] text-brand-600">About Us</p>
           <h2 className="font-display text-3xl leading-tight sm:text-4xl">
-            A campus-born collective focused on learning-by-building.
+            HEXACORE.
           </h2>
           <p className="mt-6 text-lg text-slate-600 dark:text-slate-300">
-            HyperForge started as a hallway conversation between classmates who wanted to understand every layer of the game
-            pipeline. We now meet twice a week to prototype mechanics, share references, and trade feedback on art, code, and
-            storytelling.
+            We started with a lunch break talk on campus. It began with Ahmet and Can, and now it continues with the whole team.
           </p>
           <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
-            Instead of chasing shipped titles, we document what we discover: shader tricks, playtesting rituals, and workflows
-            that help us grow into thoughtful developers.
+            Instead of attending lectures (for a while), we spent our time planning, brainstorming, and designing our website, as well as filling out our Game Jam application.
+            Now, after six hours of coding, documentation, and lots of coffee, here we are.
           </p>
         </motion.div>
 
@@ -35,17 +33,18 @@ const AboutSection = () => {
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-brand-600">What drives us</p>
             <ul className="mt-3 space-y-3 text-slate-600 dark:text-slate-300">
-              <li>• Building expressive prototypes that teach us new tech every sprint.</li>
-              <li>• Hosting critique circles so design, art, and audio stay in sync.</li>
-              <li>• Sharing resources with other students through workshops and jams.</li>
+              <li>• Creating with Rollic</li>
+              <li>• An unrelenting hunger for victory</li>
+              <li>• Awards :)</li>
             </ul>
           </div>
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-brand-600">How we work</p>
             <ul className="mt-3 space-y-3 text-slate-600 dark:text-slate-300">
-              <li>• Pair-building sessions that rotate roles to keep everyone cross-disciplined.</li>
-              <li>• Milestones focused on feelings and player stories rather than features alone.</li>
-              <li>• Open documentation so classmates can re-create our process or join future jams.</li>
+              <li>• Relentlessly and with discipline.</li>
+              <li>• We keep the momentum going, treating every minute like it matters.</li>
+              <li>• By supporting and protecting each other, no one is left behind; every teammate’s success fuels the whole.</li>
+              <li>• Like a machine.</li>
             </ul>
           </div>
         </motion.div>

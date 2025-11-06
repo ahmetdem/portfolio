@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DarkModeToggle from './DarkModeToggle';
 import { useDarkMode } from '../../hooks/useDarkMode';
+import logo from '../../assets/logo.png';
 
 const links = [
   { href: '#hero', label: 'Home' },
@@ -19,11 +20,13 @@ const Navbar = () => {
   return (
     <header className="fixed inset-x-0 top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-slate-900/60">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-sm text-white lg:px-6">
-        <a href="#hero" className="flex items-center gap-2 font-display text-lg tracking-wide">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 font-bold shadow-lg shadow-brand-600/40">
-            HF
-          </span>
-          HyperForge
+        <a href="#hero" className="flex items-center gap-3 font-display text-lg tracking-wide">
+          <img
+            src={logo}
+            alt="Hexacore logo"
+            className="h-10 w-10 rounded-full border border-white/20 object-cover shadow-lg shadow-brand-600/40"
+          />
+          Hexacore
         </a>
 
         <div className="hidden items-center gap-8 lg:flex">
