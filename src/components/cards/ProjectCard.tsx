@@ -11,7 +11,7 @@ const ProjectCard = ({ project }: Props) => {
   const { index, direction, next, prev, goTo, setAutoAdvanceEnabled } = useCarousel(project.media.length, 10000);
   const currentMedia = project.media[index];
   const isPortrait = project.mediaAspect === 'portrait';
-  const mediaAspectClass = isPortrait ? 'aspect-[9/16]' : 'aspect-video';
+  const mediaSizeClass = isPortrait ? project.mediaHeight ?? 'h-[420px]' : 'aspect-video';
   const shouldAutoAdvance = currentMedia.type !== 'video';
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const ProjectCard = ({ project }: Props) => {
       className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5 transition hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-white/5"
       whileHover={{ y: -4 }}
     >
-      <div className={`relative ${mediaAspectClass} overflow-hidden`}>
+      <div className={`relative ${mediaSizeClass} overflow-hidden`}>
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={`${currentMedia.type}-${currentMedia.src}`}

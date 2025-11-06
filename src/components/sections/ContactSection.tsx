@@ -12,14 +12,6 @@ const ContactSection = () => {
         >
           Contact
         </motion.p>
-        <motion.h2
-          className="mt-3 font-display text-3xl sm:text-4xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          Want to jam with us or chat about our conference?
-        </motion.h2>
         <motion.p
           className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300"
           initial={{ opacity: 0, y: 20 }}

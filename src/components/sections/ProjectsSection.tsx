@@ -7,7 +7,7 @@ const inProgress = projects.filter((project) => project.stage === 'in-progress')
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="bg-white py-16 dark:bg-slate-950 scroll-mt-24">
+    <section id="projects" className="bg-slate-50 py-16 dark:bg-slate-900 scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 lg:px-6">
         <motion.div
           className="max-w-3xl"

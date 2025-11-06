@@ -6,6 +6,10 @@ import shooterVideo from '../assets/projects/shooter/shooter.mp4';
 import shooterImg1 from '../assets/projects/shooter/shooter01.png';
 import shooterImg2 from '../assets/projects/shooter/shooter02.png';
 import shooterImg3 from '../assets/projects/shooter/shooter03.png';
+import cubeVideo from '../assets/projects/cube-eleven/cube-eleven.mp4';
+import cubeImg1 from '../assets/projects/cube-eleven/cube-eleven.png';
+import cubeImg2 from '../assets/projects/cube-eleven/cube-eleven2.png';
+import cubeImg3 from '../assets/projects/cube-eleven/cube-eleven3.png';
 import unnaturalVideo from '../assets/projects/The Unnatural Leap/cihangame.mp4';
 import unnaturalImg1 from '../assets/projects/The Unnatural Leap/cihan-game-01.png';
 import unnaturalImg2 from '../assets/projects/The Unnatural Leap/cihan-game-02.png';
@@ -29,6 +33,7 @@ export type Project = {
   status: string;
   stage: 'shipped' | 'in-progress';
   mediaAspect?: 'landscape' | 'portrait';
+  mediaHeight?: string;
 };
 
 const projects: Project[] = [
@@ -95,7 +100,27 @@ const projects: Project[] = [
     ],
     status: 'Vertical Slice WIP',
     stage: 'in-progress'
-  }
+  },
+  {
+    id: 'cube-eleven',
+    title: 'Cube Eleven',
+    description: 'Mobile spatial puzzler where you rotate a neon cube to align glowing nodes before the timer drains.',
+    media: [
+      {
+        type: 'video',
+        src: cubeVideo,
+        alt: 'Cube Eleven gameplay capture',
+        poster: cubeImg1
+      },
+      { type: 'image', src: cubeImg1, alt: 'Cube Eleven screenshot 1' },
+      { type: 'image', src: cubeImg2, alt: 'Cube Eleven screenshot 2' },
+      { type: 'image', src: cubeImg3, alt: 'Cube Eleven screenshot 3' }
+    ],
+    status: 'Mobile Prototype',
+    stage: 'in-progress',
+    mediaAspect: 'portrait',
+    mediaHeight: 'h-[520px]'
+  },
 ];
 
 export default projects;
