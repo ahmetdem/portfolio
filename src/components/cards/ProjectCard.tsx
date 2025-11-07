@@ -15,7 +15,8 @@ const ProjectCard = ({ project }: Props) => {
   const isPortrait = project.mediaAspect === 'portrait';
   const mediaSizeClass = isPortrait ? project.mediaHeight ?? 'h-[420px]' : 'aspect-video';
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const shouldAutoAdvance = currentMedia.type !== 'video' || !isInView;
+  const isVideoLikeMedia = currentMedia.type === 'video' || currentMedia.type === 'youtube';
+  const shouldAutoAdvance = !isVideoLikeMedia || !isInView;
 
   useEffect(() => {
     setAutoAdvanceEnabled(shouldAutoAdvance);
@@ -47,13 +48,14 @@ const ProjectCard = ({ project }: Props) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            {currentMedia.type === 'image' ? (
+            {currentMedia.type === 'image' && (
               <img
                 src={currentMedia.src}
                 alt={currentMedia.alt ?? `${project.title} screenshot ${index + 1}`}
                 className="h-full w-full object-cover"
               />
-            ) : (
+            )}
+            {currentMedia.type === 'video' && (
               <video
                 ref={videoRef}
                 className="h-full w-full object-cover"
@@ -66,6 +68,16 @@ const ProjectCard = ({ project }: Props) => {
                 playsInline
                 preload="metadata"
                 onEnded={() => next()}
+              />
+            )}
+            {currentMedia.type === 'youtube' && (
+              <iframe
+                className="h-full w-full"
+                src={currentMedia.src}
+                title={currentMedia.alt ?? `${project.title} gameplay video`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
               />
             )}
           </motion.div>

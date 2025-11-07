@@ -9,7 +9,8 @@ const EventCard = ({ event }: { event: Event }) => {
   const { ref: cardRef, isInView } = useInViewport<HTMLDivElement>({ threshold: 0.35 });
   const currentMedia = event.media[index];
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const shouldAutoAdvance = currentMedia.type !== 'video' || !isInView;
+  const isVideoLikeMedia = currentMedia.type === 'video' || currentMedia.type === 'youtube';
+  const shouldAutoAdvance = !isVideoLikeMedia || !isInView;
 
   useEffect(() => {
     setAutoAdvanceEnabled(shouldAutoAdvance);
@@ -42,13 +43,14 @@ const EventCard = ({ event }: { event: Event }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           >
-            {currentMedia.type === 'image' ? (
+            {currentMedia.type === 'image' && (
               <img
                 src={currentMedia.src}
                 alt={currentMedia.alt ?? `${event.title} photo ${index + 1}`}
                 className="h-full w-full object-cover"
               />
-            ) : (
+            )}
+            {currentMedia.type === 'video' && (
               <video
                 ref={videoRef}
                 className="h-full w-full object-cover"
@@ -61,6 +63,16 @@ const EventCard = ({ event }: { event: Event }) => {
                 playsInline
                 preload="metadata"
                 onEnded={() => next()}
+              />
+            )}
+            {currentMedia.type === 'youtube' && (
+              <iframe
+                className="h-full w-full"
+                src={currentMedia.src}
+                title={currentMedia.alt ?? `${event.title} video`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
               />
             )}
           </motion.div>

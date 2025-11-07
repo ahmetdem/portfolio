@@ -5,10 +5,10 @@ import jamImg2 from '../assets/jam-conference/jam/jam2.png';
 import jamImg3 from '../assets/jam-conference/jam/jam3.png';
 import jamImg4 from '../assets/jam-conference/jam/jam4.png';
 import jamImg5 from '../assets/jam-conference/jam/jam5.png';
-import jamVideo from '../assets/jam-conference/jam/jam-video.mp4';
+const JAM_VIDEO_URL = 'https://www.youtube.com/embed/1dnaSRYRc-U?rel=0&modestbranding=1';
 
 export type EventMedia = {
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'youtube';
   src: string;
   alt?: string;
   poster?: string;
@@ -36,8 +36,8 @@ const events: Event[] = [
     location: 'Campus Auditorium · Innovation Lab + Online',
     media: [
       {
-        type: 'video',
-        src: jamVideo,
+        type: 'youtube',
+        src: JAM_VIDEO_URL,
         alt: 'Orbit Shift jam recap footage',
         poster: jamImg1
       },

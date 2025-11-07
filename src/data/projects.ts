@@ -1,16 +1,12 @@
-import cerrariaVideo from '../assets/projects/cerraria/cerraria.mp4';
 import alsatImg1 from '../assets/projects/Alsat/alsat01.png';
 import alsatImg2 from '../assets/projects/Alsat/alsat02.png';
 import alsatImg3 from '../assets/projects/Alsat/alsat03.png';
-import shooterVideo from '../assets/projects/shooter/shooter.mp4';
 import shooterImg1 from '../assets/projects/shooter/shooter01.png';
 import shooterImg2 from '../assets/projects/shooter/shooter02.png';
 import shooterImg3 from '../assets/projects/shooter/shooter03.png';
-import cubeVideo from '../assets/projects/cube-eleven/cube-eleven.mp4';
 import cubeImg1 from '../assets/projects/cube-eleven/cube-eleven.png';
 import cubeImg2 from '../assets/projects/cube-eleven/cube-eleven2.png';
 import cubeImg3 from '../assets/projects/cube-eleven/cube-eleven3.png';
-import unnaturalVideo from '../assets/projects/The Unnatural Leap/cihangame.mp4';
 import unnaturalImg1 from '../assets/projects/The Unnatural Leap/cihan-game-01.png';
 import unnaturalImg2 from '../assets/projects/The Unnatural Leap/cihan-game-02.png';
 import unnaturalImg3 from '../assets/projects/The Unnatural Leap/cihan-game-03.png';
@@ -18,8 +14,13 @@ import unnaturalImg4 from '../assets/projects/The Unnatural Leap/cihan-game-04.p
 import unnaturalImg5 from '../assets/projects/The Unnatural Leap/cihan-game-05.png';
 import unnaturalImg6 from '../assets/projects/The Unnatural Leap/cihan-game-06.png';
 
+const CERRARIA_VIDEO_URL = 'https://www.youtube.com/embed/SumjajzhD6M?rel=0&modestbranding=1';
+const SHOOTER_VIDEO_URL = 'https://www.youtube.com/embed/T7xWsn6I1eg?rel=0&modestbranding=1';
+const CUBE_ELEVEN_VIDEO_URL = 'https://www.youtube.com/embed/GZjuNA-OvNU?rel=0&modestbranding=1';
+const UNNATURAL_LEAP_VIDEO_URL = 'https://www.youtube.com/embed/UNcNv2vGgSo?rel=0&modestbranding=1';
+
 export type ProjectMedia = {
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'youtube';
   src: string;
   alt?: string;
   poster?: string;
@@ -43,8 +44,8 @@ const projects: Project[] = [
     description: 'A lush mining sim where we prototype co-op building tools and reactive lighting for underground biomes.',
     media: [
       {
-        type: 'video',
-        src: cerrariaVideo,
+        type: 'youtube',
+        src: CERRARIA_VIDEO_URL,
         alt: 'Cerraria gameplay capture'
       }
     ],
@@ -69,8 +70,8 @@ const projects: Project[] = [
     description: 'Physics-driven platformer exploring gravity swaps and narrative beats between each jump.',
     media: [
       {
-        type: 'video',
-        src: unnaturalVideo,
+        type: 'youtube',
+        src: UNNATURAL_LEAP_VIDEO_URL,
         alt: 'The Unnatural Leap gameplay capture',
         poster: unnaturalImg1
       },
@@ -90,8 +91,8 @@ const projects: Project[] = [
     description: 'Fast-paced FPS experiment focused on punchy recoil, parkour traversal, and stylized muzzle effects.',
     media: [
       {
-        type: 'video',
-        src: shooterVideo,
+        type: 'youtube',
+        src: SHOOTER_VIDEO_URL,
         alt: 'Shooter prototype gameplay capture'
       },
       { type: 'image', src: shooterImg1, alt: 'Shooter prototype screenshot 1' },
@@ -107,8 +108,8 @@ const projects: Project[] = [
     description: 'Mobile spatial puzzler where you rotate a neon cube to align glowing nodes before the timer drains.',
     media: [
       {
-        type: 'video',
-        src: cubeVideo,
+        type: 'youtube',
+        src: CUBE_ELEVEN_VIDEO_URL,
         alt: 'Cube Eleven gameplay capture',
         poster: cubeImg1
       },
