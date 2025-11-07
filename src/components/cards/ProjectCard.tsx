@@ -16,7 +16,7 @@ const ProjectCard = ({ project }: Props) => {
   const mediaSizeClass = isPortrait ? project.mediaHeight ?? 'h-[420px]' : 'aspect-video';
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isVideoLikeMedia = currentMedia.type === 'video' || currentMedia.type === 'youtube';
-  const shouldAutoAdvance = !isVideoLikeMedia || !isInView;
+  const shouldAutoAdvance = isInView && !isVideoLikeMedia;
 
   useEffect(() => {
     setAutoAdvanceEnabled(shouldAutoAdvance);

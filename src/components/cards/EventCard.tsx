@@ -10,7 +10,7 @@ const EventCard = ({ event }: { event: Event }) => {
   const currentMedia = event.media[index];
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isVideoLikeMedia = currentMedia.type === 'video' || currentMedia.type === 'youtube';
-  const shouldAutoAdvance = !isVideoLikeMedia || !isInView;
+  const shouldAutoAdvance = isInView && !isVideoLikeMedia;
 
   useEffect(() => {
     setAutoAdvanceEnabled(shouldAutoAdvance);
