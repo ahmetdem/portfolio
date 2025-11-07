@@ -19,7 +19,6 @@ export type Event = {
   title: string;
   description: string;
   date: string;
-  location: string;
   media: EventMedia[];
   linkedin?: string;
 };
@@ -29,11 +28,10 @@ const LINKEDIN_RECAP = 'https://www.linkedin.com/feed/update/urn:li:activity:737
 const events: Event[] = [
   {
     id: 'jam-conference',
-    title: 'Signals & Stories Conference + Orbit Shift Game Jam',
+    title: 'Conference About the Industry + GDD Game Jam',
     description:
-      'A campus conference unpacking pipelines and production realities followed by a 48-hour jam where 18 teams put the insights into play.',
-    date: 'Apr 6, 2024 & Nov 17-19, 2023',
-    location: 'Campus Auditorium · Innovation Lab + Online',
+      'A campus conference unpacking realities of the developing games followed by a 5-hour jam where 20+ teams put the insights into designing games..',
+    date: 'Apr 24 & 25, 2025',
     media: [
       {
         type: 'youtube',

@@ -113,7 +113,6 @@ const EventCard = ({ event }: { event: Event }) => {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-600">Hosted by Hexacore</p>
         <h3 className="font-display text-2xl">{event.title}</h3>
         <p className="text-sm text-slate-600 dark:text-slate-300">{event.description}</p>
-        <p className="text-sm font-semibold text-slate-500">{event.location}</p>
       </div>
     </motion.article>
   );

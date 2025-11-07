@@ -16,8 +16,7 @@ const EventsSection = () => {
           <p className="text-sm uppercase tracking-[0.3em] text-brand-600">Jam & Conference</p>
           <h2 className="mt-3 font-display text-4xl sm:text-5xl">Moments we brought the community together</h2>
           <p className="mt-5 text-lg text-slate-600 dark:text-slate-300">
-            Our biggest sources of learning come from events we run ourselves: an honest conference about the realities of
-            student-made games, and a jam where mechanics are born in one weekend.
+            Our biggest sources of learning come from events we run ourselves: an honest conference about the realities of gaming industry, and a jam where ideas are born in one weekend.
           </p>
         </motion.div>
         <div className="mt-12 space-y-8">

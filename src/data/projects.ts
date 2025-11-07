@@ -41,7 +41,7 @@ const projects: Project[] = [
   {
     id: 'cerraria',
     title: 'Cerraria',
-    description: 'A lush mining sim where we prototype co-op building tools and reactive lighting for underground biomes.',
+    description: 'A simulator for learning and exploring how the Terraria game handles its optimization.',
     media: [
       {
         type: 'youtube',
@@ -88,7 +88,7 @@ const projects: Project[] = [
   {
     id: 'shooter',
     title: 'Shooter Prototype',
-    description: 'Fast-paced FPS experiment focused on punchy recoil, parkour traversal, and stylized muzzle effects.',
+    description: 'Fast-paced FPS shooter multiplayer game where your goal is to beat the enemy and not touch the ground.',
     media: [
       {
         type: 'youtube',
@@ -105,7 +105,7 @@ const projects: Project[] = [
   {
     id: 'cube-eleven',
     title: 'Cube Eleven',
-    description: 'Mobile spatial puzzler where you rotate a neon cube to align glowing nodes before the timer drains.',
+    description: 'Cube Eleven is a sleek, Rubik-inspired puzzle game that takes you through floating rooms built around cubes ranging from 2×2×2 to 11×11×11. Twist, rotate, and solve each cube before time runs out, with cinematic visuals, reactive music, and satisfying effects making every victory feel special.',
     media: [
       {
         type: 'youtube',
